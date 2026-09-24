@@ -29,9 +29,9 @@
 		</div>
 		<dl class="grid grid-cols-2 gap-4">
 			{#each [['−1.5 ft', 'Lowest tide this season'], ['12', 'Guests per walk, max'], ['4', 'Reef sites'], ['0', 'Animals lifted']] as [value, label]}
-				<div class="rounded-card border border-ink-700 bg-ink-700/40 p-5">
-					<dt class="text-sm text-ink-300">{label}</dt>
-					<dd class="mt-2 font-display text-3xl font-semibold text-sand-50">{value}</dd>
+				<div class="rounded-card bg-sand-50 p-5">
+					<dt class="text-sm text-ink-500">{label}</dt>
+					<dd class="mt-2 font-display text-3xl font-semibold text-ink-900">{value}</dd>
 				</div>
 			{/each}
 		</dl>
