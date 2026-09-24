@@ -30,7 +30,7 @@
 	--color-tide-100: #d9edf2;
 
 	--color-accent: #d9583b;
-	--color-accent-strong: #b3432a;
+	--color-accent-strong: #8a3a8f;
 	--color-accent-soft: #fbe2d9;
 
 	--color-danger: #a8321f;
@@ -38,7 +38,7 @@
 	--font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
 	--font-sans: 'Public Sans Variable', ui-sans-serif, system-ui, sans-serif;
 
-	--radius-base: 0.625rem;
+	--radius-base: 0.125rem;
 	--radius-card: 1.25rem;
 	--radius-pill: 9999px;
 
