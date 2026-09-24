@@ -1,0 +1,62 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/public-sans';
+
+/*
+ * Tidepool design tokens. Every colour, font and radius the app uses is
+ * declared here and reached through Tailwind utilities (bg-ink-900,
+ * font-display, rounded-card …). The default Tailwind palette is cleared so
+ * only these colours exist.
+ */
+@theme {
+	--color-*: initial;
+	--color-white: #ffffff;
+
+	--color-sand-50: #fbf8f2;
+	--color-sand-100: #f4eee3;
+	--color-sand-200: #e6dcc9;
+	--color-sand-300: #d3c4a8;
+
+	--color-ink-900: #12303a;
+	--color-ink-700: #2d4a54;
+	--color-ink-500: #566f78;
+	--color-ink-300: #9fb2b8;
+
+	--color-kelp-700: #24574a;
+	--color-kelp-500: #3f8a73;
+	--color-kelp-100: #dcece4;
+
+	--color-tide-600: #1f6f86;
+	--color-tide-100: #d9edf2;
+
+	--color-accent: #d9583b;
+	--color-accent-strong: #b3432a;
+	--color-accent-soft: #fbe2d9;
+
+	--color-danger: #a8321f;
+
+	--font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+	--font-sans: 'Public Sans Variable', ui-sans-serif, system-ui, sans-serif;
+
+	--radius-base: 0.625rem;
+	--radius-card: 1.25rem;
+	--radius-pill: 9999px;
+
+	--shadow-card: 0 1px 2px rgb(18 48 58 / 0.06), 0 8px 24px -12px rgb(18 48 58 / 0.18);
+}
+
+@layer base {
+	html {
+		font-family: var(--font-sans);
+	}
+	h1,
+	h2,
+	h3 {
+		font-family: var(--font-display);
+		letter-spacing: -0.01em;
+	}
+	:focus-visible {
+		outline: 2px solid var(--color-tide-600);
+		outline-offset: 2px;
+	}
+}
