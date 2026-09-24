@@ -17,6 +17,7 @@
 		lede="Your upcoming walks. Arrive fifteen minutes early; the tide will not wait."
 	>
 		{#snippet actions()}
+			<a href="/bookings/history" class="rounded-base border border-sand-300 px-5 py-3 text-sm font-semibold text-ink-700 hover:border-ink-500">Past walks</a>
 			<a href="/tours" class="rounded-base bg-ink-900 px-5 py-3 text-sm font-semibold text-sand-50 hover:bg-kelp-700">Book another</a>
 		{/snippet}
 	</SectionHeading>

@@ -171,3 +171,43 @@ export function createBooking(tourSlug: string, accountId: string, guests: numbe
 	bookings.push(booking);
 	return booking;
 }
+
+export interface PastWalk {
+	id: string;
+	accountId: string;
+	tourName: string;
+	site: string;
+	date: string;
+	guests: number;
+	sightings: string[];
+}
+
+export const pastWalks: PastWalk[] = [
+	{
+		id: 'pw_0901',
+		accountId: 'acc_guest',
+		tourName: 'Anemone Flats at First Light',
+		site: 'Pillar Point, Half Moon Bay',
+		date: '2026-08-24T06:10:00-07:00',
+		guests: 2,
+		sightings: ['Giant green anemone', 'Ochre star', 'Opalescent nudibranch']
+	},
+	{
+		id: 'pw_0902',
+		accountId: 'acc_guest',
+		tourName: 'Family Shore Walk',
+		site: 'Natural Bridges, Santa Cruz',
+		date: '2026-07-12T09:30:00-07:00',
+		guests: 3,
+		sightings: ['Hermit crab', 'Black turban snail']
+	},
+	{
+		id: 'pw_0903',
+		accountId: 'acc_owner',
+		tourName: 'Kelp Crab Cove',
+		site: 'Fitzgerald Marine Reserve',
+		date: '2026-08-30T07:00:00-07:00',
+		guests: 1,
+		sightings: ['Kelp crab', 'Tidepool sculpin']
+	}
+];
