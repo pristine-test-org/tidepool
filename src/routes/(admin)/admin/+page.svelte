@@ -7,6 +7,8 @@
 
 	const seatsSold = $derived(data.roster.reduce((sum, r) => sum + r.taken, 0));
 	const waitlisted = $derived(data.roster.reduce((sum, r) => sum + r.waitlist, 0));
+	const capacity = $derived(data.roster.reduce((sum, r) => sum + r.tour.capacity, 0));
+	const fillRate = $derived(capacity ? Math.round((seatsSold / capacity) * 100) : 0);
 </script>
 
 <svelte:head>
@@ -16,7 +18,14 @@
 <section class="mx-auto max-w-6xl px-5 py-14">
 	<SectionHeading eyebrow="Owner" title="Owner desk" lede="Capacity, waitlists and recent bookings across every walk this season." />
 
-	<dl class="mt-10 grid gap-4 sm:grid-cols-3">
+	<dl class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+		<div class="rounded-card bg-ink-900 p-6 text-sand-50">
+			<dt class="text-sm text-ink-300">Season fill rate</dt>
+			<dd class="mt-2 font-display text-4xl font-semibold">{fillRate}%</dd>
+			<div class="mt-4 h-1.5 overflow-hidden rounded-pill bg-ink-700">
+				<div class="h-full rounded-pill bg-kelp-100" style="width: {fillRate}%"></div>
+			</div>
+		</div>
 		{#each [['Seats sold', String(seatsSold)], ['On waitlists', String(waitlisted)], ['Confirmed revenue', price(data.revenueCents)]] as [label, value]}
 			<div class="rounded-card border border-sand-200 bg-white p-6">
 				<dt class="text-sm text-ink-500">{label}</dt>
@@ -37,7 +46,11 @@
 						</div>
 						<div class="mt-2 h-2 overflow-hidden rounded-pill bg-sand-100">
 							<div
-								class="h-full rounded-pill {taken >= tour.capacity ? 'bg-accent-strong' : 'bg-kelp-500'}"
+								class="h-full rounded-pill {taken >= tour.capacity
+									? 'bg-accent-strong'
+									: taken / tour.capacity >= 0.75
+										? 'bg-tide-600'
+										: 'bg-kelp-500'}"
 								style="width: {Math.min(100, (taken / tour.capacity) * 100)}%"
 							></div>
 						</div>
