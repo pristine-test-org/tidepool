@@ -1,7 +1,17 @@
+import adapter from '@sveltejs/adapter-node';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { sveltekit } from '@sveltejs/kit/vite';
 import tailwindcss from '@tailwindcss/vite';
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 
-export default defineConfig({
-	plugins: [tailwindcss(), sveltekit()]
-});
+export default defineConfig(({ mode }) => ({
+	plugins: [
+		tailwindcss(),
+		sveltekit({
+			preprocess: vitePreprocess(),
+			adapter: adapter(),
+			alias: { $lib: 'src/lib' },
+			paths: { origin: loadEnv(mode, '.', 'ORIGIN').ORIGIN }
+		})
+	]
+}));

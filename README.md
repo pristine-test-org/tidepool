@@ -6,9 +6,9 @@ Used as an Impeccable test repository.
 
 ## Stack
 
-- SvelteKit 2 (Svelte 5) with `@sveltejs/adapter-node`, TypeScript
+- SvelteKit 3 (Svelte 5) with `@sveltejs/adapter-node`, TypeScript
 - Tailwind CSS v4. The design tokens (colours, fonts, radii, shadow) are declared with `@theme` in `src/app.css` and used through utility classes.
-- pnpm, Node 22 (`.nvmrc`)
+- pnpm, Node 22.17 or later (`.nvmrc` selects Node 22)
 - In-memory data only (`src/lib/server/seed.ts`); it resets when the server restarts.
 
 ## Accounts
@@ -40,11 +40,11 @@ pnpm dev            # http://localhost:5173
 Production build:
 
 ```sh
-pnpm build
-PORT=3000 pnpm start   # sets ORIGIN=http://localhost:$PORT and runs `node build`
+ORIGIN=http://localhost:3000 pnpm build
+PORT=3000 pnpm start
 ```
 
-If you run `node build` directly over plain http, set `ORIGIN` yourself (for example `ORIGIN=http://localhost:3000 PORT=3000 node build`); otherwise SvelteKit rejects form posts such as sign-in as cross-site.
+For a plain HTTP production-build smoke test, set `ORIGIN` when building, matching the URL you will open. SvelteKit 3 takes this value through `paths.origin`; adapter-node 6 no longer reads `ORIGIN` at server startup. Rebuild if the fixed origin changes. For HTTPS previews with a dynamic hostname, omit `ORIGIN` when building so the adapter derives the origin from the request host. CSRF checks remain enabled.
 
 ## Contributing
 

@@ -1,4 +1,4 @@
-import type { Handle } from '@sveltejs/kit';
+import type { Handle } from '@sveltejs/kit/hooks';
 import { accounts, publicAccount } from '$lib/server/seed';
 import { SESSION_COOKIE } from '$lib/server/session';
 
